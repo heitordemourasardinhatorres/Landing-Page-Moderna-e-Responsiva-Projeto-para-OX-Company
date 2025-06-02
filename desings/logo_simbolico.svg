@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" width="200" height="100">
+  <style>
+    .neon-symbol {
+      stroke: #00FF00; /* Neon green */
+      stroke-width: 12;
+      stroke-linecap: round; /* Rounded ends for X */
+      stroke-linejoin: round;
+      fill: none; /* No fill for O and X lines */
+      filter: url(#neon-glow-symbol);
+    }
+  </style>
+
+  <defs>
+    <filter id="neon-glow-symbol" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Blur the symbol to create the glow -->
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <!-- Merge the blurred glow back with the original symbol -->
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+
+  <!-- Symbol Group - Centered -->
+  <!-- ViewBox center: (100, 50) -->
+  <!-- Symbol center within group (approx): x=(-45+40)/2 = -2.5, y=0 -->
+  <!-- Required translation: translate(100 - (-2.5), 50 - 0) = translate(102.5, 50) -->
+  <g class="neon-symbol" transform="translate(102.5, 50)">
+    <!-- O (Circle) -->
+    <circle cx="-25" cy="0" r="20"/>
+    <!-- X (Two Lines) -->
+    <line x1="10" y1="-20" x2="40" y2="20"/>
+    <line x1="10" y1="20" x2="40" y2="-20"/>
+  </g>
+</svg>
+

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <style>
+    .neon-text {
+      font-family: 'Arial', sans-serif; /* Using Arial as a common modern sans-serif */
+      font-size: 48px;
+      fill: #00FF00; /* Neon green */
+      filter: url(#neon-glow);
+      text-anchor: middle;
+    }
+  </style>
+
+  <defs>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Blur the text to create the glow -->
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <!-- Merge the blurred glow back with the original text -->
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+
+  <!-- Text -->
+  <text x="50%" y="65%" class="neon-text">Ox Company</text>
+</svg>

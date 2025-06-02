@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 150" width="250" height="150">
+  <style>
+    .neon-symbol {
+      stroke: #00FF00; /* Neon green */
+      stroke-width: 8; /* Adjusted stroke width for scale */
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      filter: url(#neon-glow-symbol);
+    }
+    .neon-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 32px; /* Adjusted font size for scale */
+      fill: #00FF00; /* Neon green */
+      filter: url(#neon-glow-text);
+      text-anchor: middle;
+    }
+  </style>
+
+  <defs>
+    <filter id="neon-glow-symbol" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="neon-glow-text" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlurText"/>
+      <feMerge>
+        <feMergeNode in="coloredBlurText"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+
+  <!-- Symbol Group (Positioned top-center) -->
+  <g class="neon-symbol" transform="translate(125, 50) scale(0.8)"> <!-- Centered H, Top V, Scaled down slightly -->
+    <!-- O (Circle) -->
+    <circle cx="-25" cy="0" r="20"/>
+    <!-- X (Two Lines) -->
+    <line x1="10" y1="-20" x2="40" y2="20"/>
+    <line x1="10" y1="20" x2="40" y2="-20"/>
+  </g>
+
+  <!-- Text (Positioned bottom-center) -->
+  <text x="50%" y="115" class="neon-text">Ox Company</text>
+
+</svg>
