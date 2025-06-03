@@ -209,25 +209,37 @@ function validateForm(formValues) {
 }
 
 /**
- * Valida o número de telefone
- * @param {string} phone - Número de telefone
- * @returns {boolean} - Se o telefone é válido
+ * Valida o número de telefone durante a digitação
+ * @param {Event} e - Evento de input
  */
-function validatePhone(phone) {
-    // Remove todos os caracteres não numéricos
+function validatePhoneInput(e) {
+    const phone = e.target.value;
     const cleanPhone = phone.replace(/\D/g, '');
     
-    // Verifica se tem entre 10 e 11 dígitos (com DDD)
-    return cleanPhone.length >= 10 && cleanPhone.length <= 11;
+    if (cleanPhone.length > 11) {
+        e.target.value = cleanPhone.slice(0, 11);
+    }
 }
 
-// Adiciona validação apenas no envio do formulário
+/**
+ * Valida o número de telefone quando o campo perde o foco
+ * @param {Event} e - Evento de blur
+ */
+function validatePhoneBlur(e) {
+    const phone = e.target.value;
+    const cleanPhone = phone.replace(/\D/g, '');
+    
+    if (cleanPhone.length < 10 || cleanPhone.length > 11) {
+        showNotification('Por favor, insira um número de telefone válido (DDD + número).', 'error');
+    }
+}
+
+// Adiciona validação do telefone
 document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.getElementById('phone');
     if (phoneInput) {
-        // Remove os event listeners anteriores
-        phoneInput.removeEventListener('input', validatePhoneInput);
-        phoneInput.removeEventListener('blur', validatePhoneBlur);
+        phoneInput.addEventListener('input', validatePhoneInput);
+        phoneInput.addEventListener('blur', validatePhoneBlur);
     }
 });
 
@@ -386,118 +398,225 @@ function setupIntersectionObserver() {
 const style = document.createElement('style');
 style.textContent = `
     .notification-popup {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-100%);
-        background-color: var(--bg-dark);
-        border: 2px solid var(--primary);
-        border-radius: 12px;
-        padding: 1.5rem;
-        max-width: 400px;
-        width: 90%;
-        opacity: 0;
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        box-shadow: 0 5px 30px rgba(22, 248, 31, 0.2);
-        z-index: 999999;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
+  position: fixed;
+  top: 20px;
+  left: 25%;
+  transform: translateX(-50%) translateY(-100%);
+  background-color: var(--bg-dark);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 90%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 5px 30px rgba(22, 248, 31, 0.2);
+  z-index: 999999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
 
-    .popup-content {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        position: relative;
-    }
+.popup-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
 
-    .popup-icon {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--primary);
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(22, 248, 31, 0.1);
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
+.popup-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 248, 31, 0.1);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-    .popup-message {
-        color: var(--text-light);
-        font-size: 1rem;
-        line-height: 1.4;
-        flex-grow: 1;
-        padding-right: 1rem;
-    }
+.popup-message {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  padding-right: 1rem;
+  text-align: left;
+}
 
-    .popup-close {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: var(--bg-dark);
-        border: 2px solid var(--primary);
-        color: var(--text-light);
-        font-size: 1.2rem;
-        cursor: pointer;
-        padding: 0;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-        flex-shrink: 0;
-    }
+.popup-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--bg-dark);
+  border: 2px solid var(--primary);
+  color: var(--text-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
 
-    .popup-close:hover {
-        background-color: var(--primary);
-        color: var(--bg-dark);
-        transform: rotate(90deg);
-    }
+.popup-close:hover {
+  background-color: var(--primary);
+  color: var(--bg-dark);
+  transform: rotate(90deg);
+}
 
-    .notification-popup.success {
-        border-color: #4CAF50;
-    }
+.notification-popup.success {
+  border-color: #4caf50;
+}
 
-    .notification-popup.error {
-        border-color: #f44336;
-    }
+.notification-popup.error {
+  border-color: #f44336;
+  left: 50%;
+}
 
-    .notification-popup.success .popup-icon {
-        color: #4CAF50;
-        background: rgba(76, 175, 80, 0.1);
-    }
+.notification-popup.success .popup-icon {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
 
-    .notification-popup.error .popup-icon {
-        color: #f44336;
-        background: rgba(244, 67, 54, 0.1);
-    }
+.notification-popup.error .popup-icon {
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+}
 
-    @media (max-width: 480px) {
-        .notification-popup {
-            width: 95%;
-            padding: 1rem;
-        }
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+  .notification-popup {
+    top: 15px;
+    padding: 1.25rem;
+    max-width: 90%;
+  }
 
-        .popup-icon {
-            font-size: 1.2rem;
-            width: 35px;
-            height: 35px;
-        }
+  .popup-content {
+    gap: 0.75rem;
+  }
 
-        .popup-message {
-            font-size: 0.9rem;
-        }
+  .popup-icon {
+    font-size: 1.3rem;
+    width: 35px;
+    height: 35px;
+  }
 
-        .popup-close {
-            width: 20px;
-            height: 20px;
-            font-size: 1rem;
-        }
-    }
+  .popup-message {
+    font-size: 0.95rem;
+    padding-right: 0.75rem;
+  }
+
+  .popup-close {
+    top: -8px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+  .notification-popup {
+    top: 10px;
+    left: 25%;
+    transform: translateX(-50%) translateY(-100%);
+    padding: 1rem;
+    max-width: 95%;
+    width: 90%;
+    border-width: 1px;
+    margin: 0 auto;
+  }
+
+  .popup-content {
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .popup-icon {
+    font-size: 1.1rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  .popup-message {
+    font-size: 0.9rem;
+    padding-right: 0.5rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .popup-close {
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    font-size: 1rem;
+    border-width: 1px;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 320px) {
+  .notification-popup {
+    padding: 0.75rem;
+    width: 95%;
+    left: 25%;
+    transform: translateX(-50%) translateY(-100%);
+  }
+
+  .popup-content {
+    justify-content: flex-start;
+  }
+
+  .popup-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+
+  .popup-message {
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  .popup-close {
+    width: 18px;
+    height: 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustes para orientação paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+  .notification-popup {
+    top: 5px;
+    padding: 0.75rem;
+  }
+
+  .popup-content {
+    gap: 0.5rem;
+  }
+
+  .popup-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+
+  .popup-message {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+}
+
 `;
 document.head.appendChild(style);
