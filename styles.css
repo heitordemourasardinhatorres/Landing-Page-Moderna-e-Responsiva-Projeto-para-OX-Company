@@ -875,3 +875,172 @@ img {
   transition: width 0.3s ease;
   width: 100px;
 }
+
+/*-----------------------------------------*/
+
+/* Estilos para mensagens de erro do formulário */
+.form-error {
+  display: none;
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:invalid:not(:placeholder-shown) + .form-error,
+.form-group textarea:invalid:not(:placeholder-shown) + .form-error {
+  display: block;
+}
+
+/* Remove a borda vermelha padrão do navegador */
+.form-group input:invalid,
+.form-group textarea:invalid {
+  box-shadow: none;
+}
+
+/* Aplica a borda vermelha apenas quando o campo está inválido e não vazio */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown),
+.form-group input[type="tel"]:invalid:not(:placeholder-shown) {
+  border-color: #f44336 !important;
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.3) !important;
+}
+
+/* Aplica a borda verde quando o campo está válido */
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown),
+.form-group input[type="tel"]:valid:not(:placeholder-shown) {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 5px rgba(22, 248, 31, 0.3) !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+/* Estilo específico para o campo de telefone */
+.form-group input[type="tel"] {
+  transition: all 0.3s ease;
+}
+
+.form-group input[type="tel"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(22, 248, 31, 0.3);
+}
+
+.notification-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  background-color: var(--bg-dark);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 90%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 5px 30px rgba(22, 248, 31, 0.2);
+  z-index: 999999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.popup-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.popup-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 248, 31, 0.1);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.popup-message {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  padding-right: 1rem;
+}
+
+.popup-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--bg-dark);
+  border: 2px solid var(--primary);
+  color: var(--text-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.popup-close:hover {
+  background-color: var(--primary);
+  color: var(--bg-dark);
+  transform: rotate(90deg);
+}
+
+.notification-popup.success {
+  border-color: #4caf50;
+}
+
+.notification-popup.error {
+  border-color: #f44336;
+}
+
+.notification-popup.success .popup-icon {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.notification-popup.error .popup-icon {
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+}
+
+@media (max-width: 480px) {
+  .notification-popup {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .popup-icon {
+    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .popup-message {
+    font-size: 0.9rem;
+  }
+
+  .popup-close {
+    width: 20px;
+    height: 20px;
+    font-size: 1rem;
+  }
+}

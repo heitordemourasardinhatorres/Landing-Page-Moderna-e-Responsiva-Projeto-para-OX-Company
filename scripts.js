@@ -175,16 +175,33 @@ async function handleFormSubmit(e) {
  * @returns {boolean} - Se o formulário é válido
  */
 function validateForm(formValues) {
-    const { name, email, message } = formValues;
+    const { name, email, phone, message } = formValues;
 
-    if (!name || !email || !message) {
-        showNotification('Por favor, preencha todos os campos obrigatórios.', 'error');
+    // Validação do nome
+    if (!name || name.trim().length < 2) {
+        showNotification('Por favor, preencha seu nome completo.', 'error');
         return false;
     }
 
+    // Validação do email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!email || !emailRegex.test(email)) {
         showNotification('Por favor, insira um email válido.', 'error');
+        return false;
+    }
+
+    // Validação do telefone
+    if (phone) {
+        const cleanPhone = phone.replace(/\D/g, '');
+        if (cleanPhone.length < 10 || cleanPhone.length > 11) {
+            showNotification('Por favor, insira um número de telefone válido (DDD + número).', 'error');
+            return false;
+        }
+    }
+
+    // Validação da mensagem
+    if (!message || message.trim().length < 10) {
+        showNotification('Por favor, escreva uma mensagem com pelo menos 10 caracteres.', 'error');
         return false;
     }
 
@@ -192,29 +209,69 @@ function validateForm(formValues) {
 }
 
 /**
- * Mostra uma notificação
+ * Valida o número de telefone
+ * @param {string} phone - Número de telefone
+ * @returns {boolean} - Se o telefone é válido
+ */
+function validatePhone(phone) {
+    // Remove todos os caracteres não numéricos
+    const cleanPhone = phone.replace(/\D/g, '');
+    
+    // Verifica se tem entre 10 e 11 dígitos (com DDD)
+    return cleanPhone.length >= 10 && cleanPhone.length <= 11;
+}
+
+// Adiciona validação apenas no envio do formulário
+document.addEventListener('DOMContentLoaded', () => {
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        // Remove os event listeners anteriores
+        phoneInput.removeEventListener('input', validatePhoneInput);
+        phoneInput.removeEventListener('blur', validatePhoneBlur);
+    }
+});
+
+/**
+ * Mostra uma notificação em formato de pop-up
  * @param {string} message - Mensagem a ser exibida
  * @param {string} type - Tipo da notificação (success/error)
  */
 function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
+    // Cria o pop-up
+    const popup = document.createElement('div');
+    popup.className = `notification-popup ${type}`;
+    popup.innerHTML = `
+        <div class="popup-content">
+            <div class="popup-icon">
+                ${type === 'success' ? '✓' : '!'}
+            </div>
+            <div class="popup-message">${message}</div>
+            <button class="popup-close">×</button>
+        </div>
+    `;
 
-    document.body.appendChild(notification);
+    // Adiciona ao DOM
+    document.body.appendChild(popup);
 
     // Anima a entrada
     requestAnimationFrame(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateY(0)';
+        popup.style.transform = 'translateY(0)';
+        popup.style.opacity = '1';
     });
 
-    // Remove após 5 segundos
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateY(-100%)';
-        setTimeout(() => notification.remove(), 300);
-    }, 5000);
+    // Função para fechar o pop-up
+    const closePopup = () => {
+        popup.style.transform = 'translateY(-100%)';
+        popup.style.opacity = '0';
+        setTimeout(() => popup.remove(), 300);
+    };
+
+    // Eventos de fechamento
+    const closeButton = popup.querySelector('.popup-close');
+    closeButton.addEventListener('click', closePopup);
+
+    // Fecha automaticamente após 5 segundos
+    setTimeout(closePopup, 5000);
 }
 
 /**
@@ -325,40 +382,122 @@ function setupIntersectionObserver() {
     });
 }
 
-// Adiciona estilos CSS para notificações
+// Atualiza os estilos CSS para o pop-up
 const style = document.createElement('style');
 style.textContent = `
-    .notification {
+    .notification-popup {
         position: fixed;
         top: 20px;
-        right: 20px;
-        padding: 1rem 2rem;
-        border-radius: 4px;
-        color: white;
-        font-weight: 500;
-        z-index: 1000;
+        left: 50%;
+        transform: translateX(-50%) translateY(-100%);
+        background-color: var(--bg-dark);
+        border: 2px solid var(--primary);
+        border-radius: 12px;
+        padding: 1.5rem;
+        max-width: 400px;
+        width: 90%;
         opacity: 0;
-        transform: translateY(-100%);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 5px 30px rgba(22, 248, 31, 0.2);
+        z-index: 999999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .popup-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .popup-icon {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(22, 248, 31, 0.1);
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .popup-message {
+        color: var(--text-light);
+        font-size: 1rem;
+        line-height: 1.4;
+        flex-grow: 1;
+        padding-right: 1rem;
+    }
+
+    .popup-close {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: var(--bg-dark);
+        border: 2px solid var(--primary);
+        color: var(--text-light);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
         transition: all 0.3s ease;
+        flex-shrink: 0;
     }
 
-    .notification.success {
-        background-color: #4CAF50;
+    .popup-close:hover {
+        background-color: var(--primary);
+        color: var(--bg-dark);
+        transform: rotate(90deg);
     }
 
-    .notification.error {
-        background-color: #f44336;
+    .notification-popup.success {
+        border-color: #4CAF50;
     }
 
-    .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+    .notification-popup.error {
+        border-color: #f44336;
     }
 
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
+    .notification-popup.success .popup-icon {
+        color: #4CAF50;
+        background: rgba(76, 175, 80, 0.1);
+    }
+
+    .notification-popup.error .popup-icon {
+        color: #f44336;
+        background: rgba(244, 67, 54, 0.1);
+    }
+
+    @media (max-width: 480px) {
+        .notification-popup {
+            width: 95%;
+            padding: 1rem;
+        }
+
+        .popup-icon {
+            font-size: 1.2rem;
+            width: 35px;
+            height: 35px;
+        }
+
+        .popup-message {
+            font-size: 0.9rem;
+        }
+
+        .popup-close {
+            width: 20px;
+            height: 20px;
+            font-size: 1rem;
+        }
     }
 `;
 document.head.appendChild(style);
