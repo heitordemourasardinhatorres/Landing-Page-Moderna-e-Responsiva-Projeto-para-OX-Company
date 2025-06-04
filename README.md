@@ -1,52 +1,54 @@
-# 🚀 OXcompany - Landing Page Profissional
+🚀 Landing Page Profissional — OX-Company
+<div align="center"> <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue" alt="Status do Projeto"/> <img src="https://img.shields.io/badge/Tecnologias-HTML%2C%20CSS%2C%20JavaScript-orange" alt="Tecnologias Utilizadas"/> </div>
+📄 Sobre o Projeto
+Este projeto é uma landing page profissional desenvolvida para um cliente da empresa OX-Company, que atua no segmento de tráfego pago e marketing digital.
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue" alt="Status do Projeto"/>
-  <img src="https://img.shields.io/badge/Tecnologias-HTML%2C%20CSS%2C%20JavaScript-orange" alt="Tecnologias Utilizadas"/>
-</div>
+O desenvolvimento desta página teve como objetivo oferecer uma interface moderna, intuitiva e focada na conversão, além de fortalecer minha atuação como desenvolvedor parceiro da OX-Company, na criação de sites e landing pages para os clientes da empresa.
 
-## 📋 Sobre o Projeto
+🎯 Objetivos do Projeto
+✅ Divulgar os serviços oferecidos pela OX-Company de forma profissional e persuasiva.
 
-A OXcompany é uma landing page profissional desenvolvida para um cliente especializado em tráfego pago. Este projeto faz parte de uma parceria estratégica onde também atuo na criação de landing pages para os clientes do mesmo.
+✅ Converter visitantes em leads qualificados.
 
-## 🎯 Objetivos
+✅ Exibir cases de sucesso e resultados da empresa.
 
-- Apresentar os serviços de tráfego pago de forma profissional e atraente
-- Converter visitantes em leads qualificados
-- Demonstrar cases de sucesso e resultados alcançados
-- Facilitar o contato e captação de novos clientes
+✅ Facilitar o contato e aumentar a geração de oportunidades comerciais.
 
-## 🛠️ Tecnologias Utilizadas
+🛠️ Tecnologias e Ferramentas
+🔸 HTML5 — Estrutura semântica e otimizada.
 
-- HTML5
-- CSS3
-- JavaScript
-- Design Responsivo
-- Otimização para SEO
+🔹 CSS3 — Layout moderno, responsivo e atraente.
 
-## ✨ Funcionalidades
+🟧 JavaScript — Funcionalidades interativas e dinâmicas.
 
-- Design moderno e profissional
-- Formulário de captura de leads
-- Seção de depoimentos
-- Portfólio de cases
-- Integração com ferramentas de análise
-- Otimização para conversão
+🖥️ Design Responsivo — Compatível com todos os dispositivos (desktop, tablet e mobile).
 
-## 🤝 Contribuição
+🚀 Otimização SEO — Melhoria no desempenho e visibilidade em motores de busca.
 
-Este projeto é parte de uma parceria comercial e está em constante evolução. Para sugestões ou melhorias, entre em contato.
+✨ Funcionalidades Implementadas
+🎯 Layout moderno, clean e focado em conversão.
 
-## 📞 Contato
+📄 Seções bem definidas: serviços, depoimentos, portfólio, contato e captura de leads.
 
-Para mais informações sobre o projeto ou parcerias:
+📱 Totalmente responsivo.
 
-- **Desenvolvedor:** Heitor
-- **Email:** heitor.mourasardinhatorres@gmail.com
-- **LinkedIn:** https://www.linkedin.com/in/heitor-de-moura-6668172a5/
+🔗 Integração com ferramentas de análise e formulários de captação.
 
----
+⚡ Carregamento otimizado para melhor performance.
 
-<div align="center">
-  <sub>Desenvolvido por Heitor</sub>
-</div>
+🚧 Status do Projeto
+🔵 Em desenvolvimento — Atualizações e melhorias contínuas.
+
+🤝 Parceria e Colaboração
+Este projeto foi desenvolvido como parte de uma parceria profissional com a OX-Company, reforçando minha atuação no desenvolvimento de landing pages, websites e interfaces voltadas para conversão.
+
+📞 Contato
+Se você deseja um site, landing page ou parceria profissional, entre em contato:
+
+👨‍💻 Desenvolvedor: Heitor de Moura
+
+📧 Email: heitor.mourasardinhatorres@gmail.com
+
+🔗 LinkedIn: linkedin.com/in/heitor-de-moura-6668172a5
+
+<div align="center"> <sub>Desenvolvido com 💙 por <strong>Heitor</strong></sub> </div>
