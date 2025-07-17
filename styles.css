@@ -205,13 +205,14 @@ img {
 }
 
 .hero-content h1 {
+  width: max-content;
   font-size: clamp(1.8rem, 5vw, 3rem);
   margin-bottom: 3rem;
   color: var(--text-light);
   text-shadow: 0 0 0.1px var(--text-light), 0 0 0.3px var(--text-light),
     0 0 50px var(--text-light);
   animation: glow 2s ease-in-out infinite alternate;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .hero-content h1:hover {
@@ -245,7 +246,7 @@ img {
   width: 0;
   height: 3px;
   background-color: var(--primary);
-  transition: width 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .hero-content-effect:hover::after {
@@ -797,18 +798,6 @@ img {
   .btn-whatsapp {
     padding: 0.625rem 1.25rem;
     font-size: 0.9rem;
-  }
-}
-
-/* Acessibilidade */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
 

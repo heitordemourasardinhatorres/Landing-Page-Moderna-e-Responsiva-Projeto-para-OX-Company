@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupWhatsAppButton();
     enhanceAnimations();
     setupIntersectionObserver();
+    animateHeroH1s(); // <-- Adiciona a animação customizada
 });
 
 /**
@@ -392,6 +393,67 @@ function setupIntersectionObserver() {
         section.classList.add('fade-in');
         sectionObserver.observe(section);
     });
+}
+
+/**
+ * Anima os h1 da hero-content em loop e ativa o efeito do span ao final
+ */
+function animateHeroH1s() {
+    const heroContent = document.querySelector('.hero-content');
+    if (!heroContent) return;
+    const h1s = heroContent.querySelectorAll('h1');
+    // Seleciona apenas o span do p da hero-content
+    const effectSpan = heroContent.querySelector('p .hero-content-effect');
+    if (!h1s.length || !effectSpan) return;
+
+    // Garante que a variável CSS está zerada
+    effectSpan.style.setProperty('--underline-width', '0');
+
+    let current = 0;
+
+    function resetH1s() {
+        h1s.forEach(h1 => {
+            h1.style.transform = '';
+            h1.style.transition = 'transform 0.3s';
+        });
+    }
+
+    function animateNext() {
+        resetH1s();
+        h1s[current].style.transform = 'scale(1.17)';
+        h1s[current].style.transition = 'transform 0.3s';
+
+        current++;
+        if (current < h1s.length) {
+            setTimeout(animateNext, 1100); // tempo para cada h1
+        } else {
+            // Ao terminar, volta todos ao normal e ativa o efeito do span
+            setTimeout(() => {
+                resetH1s();
+                // Ativa o efeito do sublinhado via variável CSS
+                effectSpan.style.setProperty('--underline-width', '100%');
+                setTimeout(() => {
+                    effectSpan.style.setProperty('--underline-width', '0');
+                }, 1200); // tempo do efeito do underline
+            }, 1100);
+        }
+    }
+
+    // Adiciona CSS para simular o hover do ::after usando variável CSS
+    const style = document.createElement('style');
+    style.textContent = `.hero-content-effect::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: var(--underline-width, 0);
+      height: 3px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }`;
+    document.head.appendChild(style);
+
+    animateNext();
 }
 
 // Atualiza os estilos CSS para o pop-up
