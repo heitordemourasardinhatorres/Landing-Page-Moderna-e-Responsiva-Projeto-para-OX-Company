@@ -1,399 +1,247 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="OX Company - Soluções em tecnologia para o seu negócio."
-    />
-    <meta name="theme-color" content="#16f81f" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="OX Company" />
-    <meta
-      name="keywords"
-      content="marketing digital, agência digital, performance, estratégias personalizadas"
-    />
+<!-- Início do Cabeçalho do Documento -->
 
-    <title>OX Company</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OX Company - Inovação e Resultados</title>
+    <meta name="description"
+        content="OX Company - Acelere seu crescimento com nossas soluções de marketing e tecnologia.">
 
-    <!-- Preload de recursos críticos -->
-    <link rel="preload" href="desings/logo_misto.svg" as="image" />
-    <link rel="preload" href="desings/phone.png" as="image" />
-    <link rel="preload" href="styles.css" as="style" />
-    <link rel="preload" href="scripts.js" as="script" />
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
 
-    <!-- Fontes com display swap -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- Fim do Cabeçalho do Documento -->
 
-    <!-- Favicon -->
-    <link rel="icon" href="desings/logo_simbolico.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="logo_simbolico.svg" />
+<body>
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="styles.css" />
-
-    <!-- Segurança -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com;"
-    />
-  </head>
-
-  <body>
-    <header class="header">
-      <div class="container">
-        <div class="logo">
-          <img
-            src="desings/logo_misto.svg"
-            alt="OX Company Logo"
-            width="70"
-            height="70"
-            loading="eager"
-          />
+    <!-- Início do Cabeçalho do Site -->
+    <header class="site-header">
+        <div class="container">
+            <a href="#hero" class="logo"><img src="desings/logo_misto.png" alt="Logo da OX Company"></a>
+            <div class="header-right">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#resultados">Resultados</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+                <a href="https://wa.me/5512996671967" class="btn btn-header-whatsapp" target="_blank"
+                    rel="noopener noreferrer">Fale Conosco<br>agora!</a>
+            </div>
         </div>
-        <nav class="main-nav" aria-label="Menu principal">
-          <ul>
-            <li><a href="#sobre" class="nav-link">Sobre nós</a></li>
-            <li><a href="#feedback" class="nav-link">Feedback</a></li>
-            <li><a href="#contato" class="nav-link">Contato</a></li>
-          </ul>
-        </nav>
-      </div>
     </header>
+    <!-- Fim do Cabeçalho do Site -->
 
+    <!-- Início do Conteúdo Principal -->
     <main>
-      <section class="hero fade">
-        <div class="container">
-          <div class="hero-content">
-            <h1>Mais engajamento?</h1>
-            <h1>Mais leads?</h1>
-            <h1>Mais conversões?</h1>
-
-            <p>
-              Estratégias personalizadas para aumentar sua presença online e
-              impulsionar seus resultados é na
-              <span class="hero-content-effect">OX Company.</span>
-            </p>
-            <a href="#contato" class="btn-primary">Fale conosco</a>
-          </div>
-          <div class="hero-image">
-            <img
-              src="desings/phone.png"
-              alt="Smartphone com aplicativo"
-              class="floating-phone"
-              width="450"
-              height="800"
-              loading="eager"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="sobre" class="about">
-        <div class="container">
-          <h2 class="section-title"><span>Sobre nós</span></h2>
-          <div class="about-content">
-            <div class="about-intro-container">
-              <p class="about-intro">
-                <span class="hero-content-effect">OX Company, </span> fundada
-                por Tiago Vianna e Heitor de Moura, é uma agência de marketing
-                digital focada em performance, dados e estratégias
-                personalizadas para impulsionar o seu crescimento.
-              </p>
+        <!-- Seção Hero: Apresentação principal -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 data-aos="fade-up">Futuro Digital.<br>Resultados Reais.</h1>
+                    <p>
+                        Combinamos performance, dados e estratégias personalizadas para impulsionar o crescimento da sua
+                        marca.
+                    </p>
+                    <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="200">Começar Projeto</a>
+                </div>
             </div>
+            <div class="hero-background-animation"></div>
+        </section>
 
-            <div class="about-bottom-content">
-              <div class="about-icons">
-                <img
-                  src="desings/decoration_1.png"
-                  alt="Decoração"
-                  class="floating-icon"
-                  width="500"
-                  height="500"
-                  loading="lazy"
-                />
-              </div>
-
-              <div class="about-features">
-                <div class="feature-item">
-                  <h3>Resultados Comprovados</h3>
-                  <p>
-                    Desenvolvemos campanhas completas, otimizadas para
-                    conversão, que já geraram mais de R$100 milhões em vendas e
-                    200 milhões de impressões para mais de 100 clientes ativos.
-                  </p>
-                </div>
-
-                <div class="feature-item">
-                  <h3>Estratégias Personalizadas</h3>
-                  <p>
-                    Nossa abordagem única combina análise de dados avançada com
-                    estratégias criativas para maximizar o retorno sobre
-                    investimento de cada cliente.
-                  </p>
-                </div>
-
-                <div class="feature-item">
-                  <h3>Compromisso com Resultados</h3>
-                  <p>
-                    Nosso compromisso é entregar resultados inteligentes e
-                    construir parcerias duradouras, baseadas em performance
-                    contínua e confiança.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="feedback" class="feedback">
-        <div class="container">
-          <h2 class="section-title"><span>Feedback</span></h2>
-          <div class="feedback-container">
-            <img
-              src="desings/grafico_logo.png"
-              alt="Gráfico"
-              class="feedback-decoration left"
-              width="150"
-              height="150"
-              loading="lazy"
-            />
-            <img
-              src="desings/google_ads_logo.png"
-              alt="Google Ads"
-              class="feedback-decoration right"
-              width="150"
-              height="150"
-              loading="lazy"
-            />
-            <div class="carousel-container">
-              <button
-                class="carousel-button prev"
-                id="prev"
-                aria-label="Feedback anterior"
-              >
-                &#10094;
-              </button>
-              <div
-                class="carousel"
-                role="region"
-                aria-label="Depoimentos de clientes"
-              >
-                <div class="carousel-item">
-                  <div class="feedback-card">
-                    <img
-                      src="desings/feedback_01.png.jpg"
-                      alt="Feedback do cliente"
-                      width="400"
-                      height="400"
-                      loading="lazy"
-                    />
-                    <div class="feedback-text">
-                      <p>
-                        " Olá! Boa tarde. Esse foi meu resultado depois de 3
-                        semanas de conversão com vocês. Obrigado, aumentei 3x
-                        minhas vendas. "
-                      </p>
+        <!-- Seção Sobre: Detalhes sobre a empresa -->
+        <section id="sobre">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image" data-aos="fade-right">
+                        <img src="desings/decoration_1.png" alt="Abstração gráfica representando inovação">
                     </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="feedback-card">
-                    <img
-                      src="desings/feedback_03.png.jpg"
-                      alt="Feedback do cliente"
-                      width="400"
-                      height="400"
-                      loading="lazy"
-                    />
-                    <div class="feedback-text">
-                      <p>
-                        " Tiago, esse foi o resultado da minha loja! Estamos
-                        bombando! Obrigadaaaa!!! Quero fazer mais vezes. "
-                      </p>
+                    <div class="about-text" data-aos="fade-left">
+                        <h2>Sobre a OX Company</h2>
+                        <p>Fundada por Tiago Vianna e Heitor de Moura, a OX Company é uma agência de marketing digital
+                            movida por dados e criatividade. Nossa missão é criar parcerias de sucesso, entregando
+                            soluções personalizadas que atendem às necessidades únicas de cada cliente.</p>
+                        <p>Com um histórico de mais de R$100 milhões em vendas geradas e 200 milhões de impressões,
+                            nosso compromisso é com resultados inteligentes e crescimento contínuo.</p>
                     </div>
-                  </div>
                 </div>
-                <div class="carousel-item">
-                  <div class="feedback-card">
-                    <img
-                      src="desings/feedback_04.png.jpg"
-                      alt="Feedback do cliente"
-                      width="400"
-                      height="400"
-                      loading="lazy"
-                    />
-                    <div class="feedback-text">
-                      <p>
-                        " No começo, estava com medo porque já fiz serviço com
-                        vários gestores e nenhum funcionou. Eu nunca vi um
-                        resultado igual ao de vocês, vendi 7x mais do que mês
-                        passado."
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button
-                class="carousel-button next"
-                id="next"
-                aria-label="Próximo feedback"
-              >
-                &#10095;
-              </button>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contato" class="contact contact">
-        <div class="container">
-          <h2 class="section-title"><span>Contato</span></h2>
-          <div class="contact-content">
-            <div class="contact-info">
-              <h3>Vamos conversar sobre o seu projeto</h3>
-              <p>
-                Preencha o formulário ao lado ou entre em contato diretamente
-                pelo WhatsApp para começarmos a transformar o seu negócio.
-              </p>
-              <a
-                href="https://wa.me/5512996671967"
-                class="btn-whatsapp"
-                id="whatsapp-button"
-                rel="noopener noreferrer"
-                >Entre em contato com a gente agora!</a
-              >
-              <img
-                src="desings/decoration_2.png"
-                alt="Decoração"
-                class="contact-decoration"
-                width="300"
-                height="300"
-                loading="lazy"
-              />
+        <!-- Seção Serviços: Lista de serviços oferecidos -->
+        <section id="servicos">
+            <div class="container">
+                <h2 data-aos="fade-up">Nossos Serviços</h2>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-icon">
+                            <img src="desings/grafico_logo.png" alt="Ícone de Performance">
+                        </div>
+                        <h3>Marketing de Performance</h3>
+                        <p>Campanhas de tráfego pago otimizadas para conversão, focadas em ROI e crescimento sustentável
+                            para o seu negócio.</p>
+                    </div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="service-icon">
+                            <img src="desings/google_ads_logo.png" alt="Ícone de Estratégia">
+                        </div>
+                        <h3>Estratégia Digital</h3>
+                        <p>Análise de dados avançada e estratégias criativas para maximizar o retorno sobre o
+                            investimento (ROI).</p>
+                    </div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon">
+                            <img src="desings/tecnologia_ico.png" alt="Ícone de Tecnologia">
+                        </div>
+                        <h3>Desenvolvimento e Tecnologia</h3>
+                        <p>Criação de landing pages e sites modernos, responsivos e de alta performance para capturar
+                            leads e impulsionar vendas.</p>
+                    </div>
+                </div>
             </div>
-            <div class="contact-form">
-              <form id="contactForm" novalidate>
-                <div class="form-group">
-                  <label for="name">Nome</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    minlength="2"
-                    maxlength="100"
-                    pattern="[A-Za-zÀ-ÿ\s]+"
-                    title="Digite seu nome completo"
-                    placeholder="Digite seu nome completo"
-                  />
-                  <small class="form-error"
-                    >Por favor, digite seu nome completo</small
-                  >
+        </section>
+
+        <!-- Seção Resultados: Depoimentos e resultados de clientes em um carrossel -->
+        <section id="resultados">
+            <div class="container">
+                <h2 data-aos="fade-up">Resultados que Falam por Si</h2>
+                <div class="carousel-container" data-aos="fade-up">
+                    <button class="carousel-button prev" id="prev" aria-label="Resultado anterior">
+                        &#10094;
+                    </button>
+                    <div class="carousel" role="region" aria-label="Depoimentos de clientes">
+                        <div class="carousel-item">
+                            <div class="feedback-card">
+                                <div class="feedback-image">
+                                    <img src="desings/feedback_01.png.jpg"
+                                        alt="Depoimento de cliente sobre aumento de vendas" loading="lazy" />
+                                </div>
+                                <div class="feedback-text">
+                                    <p>"Esse foi meu resultado depois de 3 semanas de conversão com vocês. Obrigado,
+                                        aumentei 3x minhas vendas."</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="feedback-card">
+                                <div class="feedback-image">
+                                    <img src="desings/feedback_03.jpg"
+                                        alt="Depoimento de cliente sobre progresso com a OX Company" loading="lazy" />
+                                </div>
+                                <div class="feedback-text">
+                                    <p>"Opa tiago, tudo bem? Cara muito obrigado pela essa força, depois que contratamos
+                                        a Ox company finalmente conseguimos progredir absurdamente!"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="feedback-card">
+                                <div class="feedback-image">
+                                    <img src="desings/feedback_04.png.jpg"
+                                        alt="Depoimento de cliente sobre multiplicação de vendas" loading="lazy" />
+                                </div>
+                                <div class="feedback-text">
+                                    <p>"Eu nunca vi um resultado igual ao de vocês, vendi 7x mais do que mês passado. De
+                                        coração, obrigado."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-button next" id="next" aria-label="Próximo resultado">
+                        &#10095;
+                    </button>
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="Digite seu email"
-                  />
-                  <small class="form-error"
-                    >Por favor, digite um email válido</small
-                  >
-                </div>
-                <div class="form-group">
-                  <label for="phone">Telefone</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    pattern="[0-9]{10,11}"
-                    title="Digite um número de telefone válido (apenas números)"
-                    oninput="this.value = this.value.replace(/\D/g, '')"
-                    maxlength="11"
-                    placeholder="Digite apenas números (DDD + número)"
-                    novalidate
-                  />
-                  <small class="form-error"
-                    >Digite um número de telefone válido (apenas números)</small
-                  >
-                </div>
-                <div class="form-group">
-                  <label for="message">Mensagem</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    required
-                    minlength="10"
-                    maxlength="1000"
-                    placeholder="Digite sua mensagem"
-                  ></textarea>
-                  <small class="form-error"
-                    >Por favor, escreva uma mensagem com pelo menos 10
-                    caracteres</small
-                  >
-                </div>
-                <button type="submit" class="btn-primary">
-                  Enviar mensagem
-                </button>
-              </form>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
+
+        <!-- Seção Contato: Formulário e informações de contato -->
+        <section id="contact">
+            <div class="container" data-aos="fade-up">
+                <h2>Vamos Construir Algo Incrível Juntos</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Pronto para levar seu negócio para o próximo nível?</h3>
+                        <p>Preencha o formulário ou entre em contato diretamente pelo WhatsApp para começarmos a
+                            transformar o seu negócio.</p>
+                        <a href="https://wa.me/5512996671967" class="btn-whatsapp" rel="noopener noreferrer">Entre em
+                            contato com a gente agora!</a>
+                    </div>
+                    <!-- O envio deste formulário deve ser tratado via JavaScript (ex: no arquivo scripts.js) -->
+                    <form class="contact-form" id="contactForm" method="POST" action="#" novalidate>
+                        <input type="text" name="name" placeholder="Seu Nome">
+                        <input type="email" name="email" placeholder="Seu E-mail">
+                        <input type="tel" name="phone" placeholder="Seu Telefone (Opcional)" maxlength="15">
+                        <textarea name="message" rows="5" placeholder="Sua Mensagem"></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+    <!-- Fim do Conteúdo Principal -->
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-logo">
-          <img
-            src="desings/logo_simbolico.svg"
-            alt="OX Company Logo"
-            width="45"
-            height="45"
-            loading="lazy"
-          />
+    <!-- Início do Rodapé -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column footer-about">
+                    <a href="#hero" class="footer-logo"><img src="desings/logo_simbolico.svg"
+                            alt="Símbolo da OX Company"></a>
+                    <p>Construindo o futuro digital da sua marca com performance e inovação.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#resultados">Resultados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="#contact">Formulário</a></li>
+                        <li><a href="https://wa.me/5512996671967" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Social</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/oxxcompany?igsh=Y3RsaWZodDNpMWk3" class="social-icon"
+                            target="_blank" rel="noopener noreferrer"><img src="desings/insta_logo.png"
+                                alt="Instagram" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 OX Company. Todos os direitos reservados.</p>
+            </div>
         </div>
-        <nav class="footer-links" aria-label="Menu do rodapé">
-          <ul>
-            <li><a href="#sobre">Sobre nós</a></li>
-            <li><a href="#feedback">Feedback</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ul>
-        </nav>
-        <div class="footer-social">
-          <a
-            href="https://www.instagram.com/oxxcompany?igsh=Y3RsaWZodDNpMWk3"
-            class="social-icon"
-            ><img src="desings/insta_logo.png" alt="Instagram"
-          /></a>
-        </div>
-        <div class="footer-copyright">
-          <p>&copy; 2025 OX Company. Todos os direitos reservados.</p>
-        </div>
-      </div>
     </footer>
+    <!-- Fim do Rodapé -->
 
     <!-- Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-      defer
-    ></script>
+    <!-- Biblioteca AOS para animações de scroll -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Biblioteca EmailJS para envio de formulário -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Arquivo de script principal -->
+    <!-- A inicialização de bibliotecas como a AOS deve ser feita dentro deste arquivo. -->
     <script src="scripts.js" defer></script>
-  </body>
+</body>
+
 </html>
