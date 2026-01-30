@@ -88,6 +88,36 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel();
     startAutoRotate();
 
+    /* --- NAVEGAÇÃO MÓVEL (HAMBURGER) --- */
+
+    /**
+     * Configura a funcionalidade do menu de navegação móvel (hamburger).
+     */
+    function setupMobileNav() {
+        const navToggle = document.getElementById('navToggle');
+        const headerRight = document.querySelector('.header-right');
+        const navLinks = document.querySelectorAll('.main-nav a, .btn-header-whatsapp');
+
+        if (!navToggle || !headerRight) return;
+
+        const toggleNav = () => {
+            document.body.classList.toggle('nav-open');
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+        };
+
+        navToggle.addEventListener('click', toggleNav);
+
+        // Fecha o menu ao clicar em um link (para navegação na mesma página)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (document.body.classList.contains('nav-open')) {
+                    toggleNav();
+                }
+            });
+        });
+    }
+
     /* --- FORMULÁRIO DE CONTATO COM EMAILJS E NOTIFICAÇÕES --- */
 
     /**
@@ -246,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Inicia a configuração do formulário.
+    setupMobileNav();
     setupContactForm();
 
 });
